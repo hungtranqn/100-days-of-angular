@@ -543,7 +543,7 @@ of('hi', 'how are you?', 'sorry, I have to go now')
 from([1, 2, 3, 4, 5])
   .pipe(
     pairwise(),
-    map((prev, cur) => prev + cur)
+    map(([prev, cur]) => prev + cur)
   )
   .subscribe(observer);
 // output:
