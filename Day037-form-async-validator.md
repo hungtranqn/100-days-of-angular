@@ -286,14 +286,14 @@ Use case để validate confirm password trùng với password thì chúng ta ch
 ```ts
 validateControlsValue(firstControlName: string, secondControlName: string) {
   return function(formGroup: FormGroup) {
-    const { value: firstControlValue } = formGroup.get(firstControlName);
-    const { value: secondControlValue } = formGroup.get(secondControlName);
-    return firstControlValue === secondControlValue
+    const firstControlValue  = formGroup.get(firstControlName);
+    const secondControlValue= formGroup.get(secondControlName);
+    return firstControlValue?.value === secondControlValue?.value
       ? null
       : {
           valueNotMatch: {
-            firstControlValue,
-            secondControlValue
+            firstControlName: firstControlValue?.value,
+            secondControlName: secondControlValue?.value
           }
         };
   };
